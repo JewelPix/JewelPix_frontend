@@ -342,7 +342,8 @@ const CheckoutPage = () => {
       // Clear cart on both frontend and backend using the async function
       await clearCart();
 
-      navigate("/thank-you");
+      // In your cart checkout component
+      navigate("/thank-you", { state: { source: "order" } });
     } catch (err) {
       console.error("Error placing order:", err);
       alert(`Error: ${err.message}`);
@@ -350,7 +351,7 @@ const CheckoutPage = () => {
       setOrderLoading(false);
     }
   };
-  
+
   // Fetch address on load
   useEffect(() => {
     const fetchAddress = async () => {
